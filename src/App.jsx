@@ -11,23 +11,23 @@ export default function App() {
 
 
   useEffect(()=>{
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await fetch(`https://hipsum.co/api/?type=hipster-latin&sentences=${sentenceNumber}`);
-    //     const result = await response.json();
-    //     setData(result);
-    //   } catch (error) {
-    //     console.error('Error fetching data:', error);
-    //   } finally {
-    //     setIsLoading(false);
-    //     console.log('loading');
-    //   }
-    // };
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://hipsum.co/api/?type=hipster-latin&sentences=${sentenceNumber}`);
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
+        console.log('loading');
+      }
+    };
 
-    // fetchData();
+    fetchData();
     // for testing purpose comment above and uncomment below code
-    setIsLoading(false);
-    setData('Leggings blue bottle tilde kombucha thundercats. Sed raw denim ascot, retro waistcoat skateboard big mood celiac squid heirloom thundercats health goth vape. Lo-fi marxism meh etsy, normcore et occaecat meditation chicharrones laborum ex proident brunch. Vaporware tattooed occupy proident pariatur. Deep v flannel occupy meditation VHS art party. Shaman laborum neutra live-edge DIY salvia VHS street art art party glossier air plant green juice williamsburg. Tumblr tumeric portland synth. Air plant solarpunk shabby chic consequat tousled 8-bit ennui direct trade. Gastropub dolor celiac vaporware laborum ennui sustainable taiyaki. Kogi dreamcatcher etsy aliqua migas shoreditch incididunt craft beer.');
+    // setIsLoading(false);
+    // setData('Leggings blue bottle tilde kombucha thundercats. Sed raw denim ascot, retro waistcoat skateboard big mood celiac squid heirloom thundercats health goth vape. Lo-fi marxism meh etsy, normcore et occaecat meditation chicharrones laborum ex proident brunch. Vaporware tattooed occupy proident pariatur. Deep v flannel occupy meditation VHS art party. Shaman laborum neutra live-edge DIY salvia VHS street art art party glossier air plant green juice williamsburg. Tumblr tumeric portland synth. Air plant solarpunk shabby chic consequat tousled 8-bit ennui direct trade. Gastropub dolor celiac vaporware laborum ennui sustainable taiyaki. Kogi dreamcatcher etsy aliqua migas shoreditch incididunt craft beer.');
 
   },[sentenceNumber]);
   return (
@@ -36,7 +36,7 @@ export default function App() {
 
       <InputForm setSentenceNumber={setSentenceNumber} setIsLoading={setIsLoading} />
       <hr />
-      <ShowData data={data} isLoading={isLoading}/>
+      {!isLoading? <ShowData data={data} isLoading={isLoading}/> : ''}
 
       
       <br />
