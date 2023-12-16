@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export default function InputForm({setSentenceNumber, setIsLoading}) {
 
-    const [number, setNumber] = useState(0);
+    const [number, setNumber] = useState();
 
     const handleSubmit = (e)=>{
 
@@ -10,6 +10,7 @@ export default function InputForm({setSentenceNumber, setIsLoading}) {
         console.log('submit button clicked.');
         setIsLoading(true);
         setSentenceNumber(number);
+        // setNumber('');
         
     }
   return (
@@ -23,6 +24,7 @@ export default function InputForm({setSentenceNumber, setIsLoading}) {
                 <label htmlFor="sentenceNumber"
                 className=''>Enter the number of sentences: </label>
                 <input type="number" name="" id="sentenceNumber" 
+                // disabled={setIsLoading?true:false}
                 value={number}
                 onChange={(e)=>{setNumber(e.target.value)}}
                 className='border border-gray-600 rounded px-2'/>

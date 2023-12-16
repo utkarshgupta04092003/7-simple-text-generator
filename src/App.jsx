@@ -13,7 +13,8 @@ export default function App() {
   useEffect(()=>{
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://hipsum.co/api/?type=hipster-latin&sentences=${sentenceNumber}`);
+        let number = await parseInt(sentenceNumber)
+        const response = await fetch(`https://hipsum.co/api/?type=hipster-latin&sentences=${number}`);
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -36,9 +37,8 @@ export default function App() {
 
       <InputForm setSentenceNumber={setSentenceNumber} setIsLoading={setIsLoading} />
       <hr />
-      {!isLoading? <ShowData data={data} isLoading={isLoading}/> : ''}
+      <ShowData data={data} isLoading={isLoading}/> 
 
-      
       <br />
 
     </div>
